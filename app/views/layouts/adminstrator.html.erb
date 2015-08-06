@@ -1,0 +1,153 @@
+<style>
+  .dropdown-menu {
+    width: 200px ;
+}
+/* make sidebar nav vertical */ 
+@media (min-width: 768px) {
+  .sidebar-nav .navbar .navbar-collapse {
+    padding: 0;
+    max-height: none;
+  }
+  .sidebar-nav .navbar ul {
+    float: none;
+  }
+  .sidebar-nav .navbar ul:not {
+    display: block;
+  }
+  .sidebar-nav .navbar li {
+    float: none;
+    display: block;
+  }
+  .sidebar-nav .navbar li a {
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+  .navbar {
+  background-color: #d5e73c;
+  
+}
+.nav .nav-sidebar{
+  background-color: #d5e73c;
+  
+}
+
+}
+
+  </style>
+
+<head>  
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>  
+<body>
+  <nav class="navbar ">
+  <div class="container-fluid">
+    <div class="navbar-header">
+          <a class="navbar-brand" href="#">ADMINSTRATOR</a>
+    </div>
+   
+      
+      <ul class="nav navbar-nav navbar-right">
+        
+
+              <li class="dropdown user user-menu">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <i class="glyphicon glyphicon-user"></i>
+                  <span><%=current_user.email%> <i class="caret"></i></span>
+                </a>
+                <ul class="dropdown-menu">
+                 
+                  <li class="user-body">
+                    <div class="col-md-12 text-center" data-hook="store-frontend-link">
+                      <a target="_blank" href="/">Go Back To Store</a>
+                    </div>
+                  </li>
+                  <li class="user-footer" id="login-nav">
+                    <div class="pull-left " data-hook="user-account-link">
+                       <%=link_to "Account" , edit_user_registration_path,class: "btn btn-default btn-flat"%>   
+                    </div>
+                    <div  data-hook="user-logout-link">
+                      <%= link_to "Logout", destroy_user_session_path, method: :delete,class: "btn btn-default btn-flat"%>
+                    </div>
+                  </li>
+               
+                </ul>
+              </li>
+          
+
+      </ul>
+   
+  </div>
+</nav>
+
+
+<div class="container-fluid">
+      <div class="row">
+        <div class = "col-md-2"> 
+        
+          <ul class="nav nav-sidebar ">
+            <li class="sidebar-menu-item"><a data-toggle="collapse" data-parent="#sidebar" href="#sidebar-user">
+              <span class="icon icon-th-large"></span>
+              <span class="glyphicon glyphicon-user"></span>
+              <span class="text">Users</span><span class="caret"></span></a><ul id="sidebar-user" class="collapse nav nav-pills nav-stacked" >
+               
+              <li class="sidebar-menu-item" > 
+                <%=link_to "List of users" , admin_users_path%> 
+              </li>
+              <li class="sidebar-menu-item">
+                <%=link_to "New user" , new_admin_user_path%> 
+              </li> 
+            </li>
+          </ul>
+
+          <ul class="nav nav-sidebar">
+            <li class="sidebar-menu-item"><a data-toggle="collapse" data-parent="#sidebar" href="#sidebar-role">
+              <span class="icon icon-th-large"></span>
+              <span class="glyphicon glyphicon-star"></span>
+              <span class="text">Roles</span><span class="caret"></span></a><ul id="sidebar-role" class="collapse nav nav-pills nav-stacked" >
+               
+              <li class="sidebar-menu-item" > 
+                <%=link_to "List of roles" , admin_roles_path%> 
+              </li>
+              <li class="sidebar-menu-item">
+                <%=link_to "New role" , new_admin_role_path%> 
+              </li> 
+            </li>
+          </ul>
+
+          <ul class="nav nav-sidebar">
+            <li class="sidebar-menu-item"><a data-toggle="collapse" data-parent="#sidebar" href="#sidebar-category">
+              <span class="icon icon-th-large"></span>
+              <span class="glyphicon glyphicon-list-alt"></span>
+              <span class="text">Categories</span><span class="caret"></span></a><ul id="sidebar-category" class="collapse nav nav-pills nav-stacked" >
+               
+              <li class="sidebar-menu-item" > 
+                <%=link_to "List of categories" , admin_categories_path%> 
+              </li>
+              <li class="sidebar-menu-item">
+                <%=link_to "New category" , new_admin_category_path%> 
+              </li> 
+            </li>
+          </ul>
+        
+      </div>
+    
+        <div class = "col-md-10">
+           <%= yield %>
+        </div>
+      </div>
+    </div>
+
+    <script>
+$(document).ready(function(){
+    $(".btn-primary").click(function(){
+        $(".collapse").collapse('toggle');
+    });
+    
+});
+</script>
+
+</body> 
+
+    
