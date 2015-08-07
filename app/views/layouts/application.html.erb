@@ -15,7 +15,7 @@
         line-height: normal;
         color: #CCCCFF;
     }
-    .container-fluid .row .col-md-2{
+    .side-boder{
     border-right: 1px solid #eee;
     min-height: 1000px;
     }
@@ -45,13 +45,18 @@
     <div class="container-fluid">
       <div class ="row">
         <div class ="col-md-2">
-          <ul class = "nav nav-stacked">  
+          <ul class = "nav nav-stacked"> 
+            <div class = "side-boder"> 
             <%=render 'layouts/nav_side'%>
+          </div>
           </ul>
         </div>
         <div class ="col-md-10">
+      
           <%= yield %>  
-          <%=render 'layouts/product_contain'%>
+
+          
+        
         </div>
       </div>
     </div>
