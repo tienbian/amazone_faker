@@ -1,6 +1,6 @@
 
 
-<h1>Listing Categories</h1>
+
 
 <table>
   <thead>
@@ -9,7 +9,7 @@
       <th colspan="3"></th>
     </tr>
   </thead>
-
+  <%@categories= Category.all%>
   <tbody>
     <% @categories.each do |category| %>
       <tr>
