@@ -26,11 +26,21 @@
   background-color: #d5e73c;
   
 }
-.nav .nav-sidebar{
-  background-color: #d5e73c;
+.nav .nav-sidebar .sidebar-menu-item{
+  background-color: #E0E0D1;
   
 }
-
+.nav .nav-sidebar .sub-sidebar-menu-item{
+  background-color: #FFFFFF;
+  
+}
+.contain-admin{
+   
+}
+.container-fluid .row .col-md-2{
+border-right: 1px solid #eee;
+min-height: 1000px;
+}
 }
 
   </style>
@@ -39,8 +49,15 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+
 </head>  
 <body>
+   <% if notice %>
+    <p class="alert alert-success"><%= notice %></p>
+  <% end %>
+  <% if alert %>
+    <p class="alert alert-danger"><%= alert %></p>
+  <% end %>
   <nav class="navbar ">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -81,63 +98,86 @@
   </div>
 </nav>
 
+<hr class="divider">
+  <div class="container-fluid">
 
-<div class="container-fluid">
       <div class="row">
+        
         <div class = "col-md-2"> 
-        
-          <ul class="nav nav-sidebar ">
-            <li class="sidebar-menu-item"><a data-toggle="collapse" data-parent="#sidebar" href="#sidebar-user">
-              <span class="icon icon-th-large"></span>
-              <span class="glyphicon glyphicon-user"></span>
-              <span class="text">Users</span><span class="caret"></span></a><ul id="sidebar-user" class="collapse nav nav-pills nav-stacked" >
+         
+          <ul class="nav nav-pills nav-stacked">
+           
+            <ul class="nav nav-sidebar ">
+              <li class="sidebar-menu-item"><a data-toggle="collapse" data-parent="#sidebar" href="#sidebar-user">
                
-              <li class="sidebar-menu-item" > 
-                <%=link_to "List of users" , admin_users_path%> 
+                <span class="glyphicon glyphicon-user"></span>
+                <span class="text">USERS</span><span class="pull-right caret"></span></a><ul id="sidebar-user" class="collapse nav nav-pills nav-stacked" >
+                 
+                <li class="sub-sidebar-menu-item" > 
+                  <%=link_to "List of users" , admin_users_path%> 
+                </li>
+                <li class="sub-sidebar-menu-item">
+                  <%=link_to "New user" , new_admin_user_path%> 
+                </li> 
               </li>
-              <li class="sidebar-menu-item">
-                <%=link_to "New user" , new_admin_user_path%> 
-              </li> 
-            </li>
-          </ul>
+            </ul>
 
-          <ul class="nav nav-sidebar">
-            <li class="sidebar-menu-item"><a data-toggle="collapse" data-parent="#sidebar" href="#sidebar-role">
-              <span class="icon icon-th-large"></span>
-              <span class="glyphicon glyphicon-star"></span>
-              <span class="text">Roles</span><span class="caret"></span></a><ul id="sidebar-role" class="collapse nav nav-pills nav-stacked" >
-               
-              <li class="sidebar-menu-item" > 
-                <%=link_to "List of roles" , admin_roles_path%> 
+            <ul class="nav nav-sidebar">
+              <li class="sidebar-menu-item"><a data-toggle="collapse" data-parent="#sidebar" href="#sidebar-role">
+                
+                <span class="glyphicon glyphicon-star"></span>
+                <span class="text">ROLES</span><span class="pull-right caret"></span></a><ul id="sidebar-role" class="collapse nav nav-pills nav-stacked" >
+                 
+                <li class="sub-sidebar-menu-item" > 
+                  <%=link_to "List of roles" , admin_roles_path%> 
+                </li>
+                <li class="sub-sidebar-menu-item">
+                  <%=link_to "New role" , new_admin_role_path%> 
+                </li> 
               </li>
-              <li class="sidebar-menu-item">
-                <%=link_to "New role" , new_admin_role_path%> 
-              </li> 
-            </li>
-          </ul>
+            </ul>
 
-          <ul class="nav nav-sidebar">
-            <li class="sidebar-menu-item"><a data-toggle="collapse" data-parent="#sidebar" href="#sidebar-category">
-              <span class="icon icon-th-large"></span>
-              <span class="glyphicon glyphicon-list-alt"></span>
-              <span class="text">Categories</span><span class="caret"></span></a><ul id="sidebar-category" class="collapse nav nav-pills nav-stacked" >
+            <ul class="nav nav-sidebar">
+              <li class="sidebar-menu-item"><a data-toggle="collapse" data-parent="#sidebar" href="#sidebar-product">
                
-              <li class="sidebar-menu-item" > 
-                <%=link_to "List of categories" , admin_categories_path%> 
+                <span class="glyphicon glyphicon-th"></span>
+                <span class="text">PRODUCTS</span><span class="pull-right caret"></span></a><ul id="sidebar-product" class="collapse nav nav-pills nav-stacked" >
+                 
+                <li class="sub-sidebar-menu-item" > 
+                  <%=link_to "List of product" , admin_products_path%> 
+                </li>
+                <li class="sub-sidebar-menu-item">
+                  <%=link_to "New product" , new_admin_product_path%> 
+                </li> 
               </li>
-              <li class="sidebar-menu-item">
-                <%=link_to "New category" , new_admin_category_path%> 
-              </li> 
-            </li>
-          </ul>
+            </ul>
+
+            <ul class="nav nav-sidebar">
+              <li class="sidebar-menu-item"><a data-toggle="collapse" data-parent="#sidebar" href="#sidebar-category">
+               
+                <span class="glyphicon glyphicon-list-alt"></span>
+                <span class="text">CATEGORIES</span><span class="pull-right caret"></span></a><ul id="sidebar-category" class="collapse nav nav-pills nav-stacked" >
+                 
+                <li class="sub-sidebar-menu-item" > 
+                  <%=link_to "List of categories" , admin_categories_path%> 
+                </li>
+                <li class="sub-sidebar-menu-item">
+                  <%=link_to "New category" , new_admin_category_path%> 
+                </li> 
+              </li>
+            </ul>
+          </ul> 
+
+        </div>
         
-      </div>
-    
         <div class = "col-md-10">
-           <%= yield %>
+          <div class = "contain-admin">
+            <%= yield %>
+          </div>
         </div>
       </div>
-    </div>
+  </div>
+</hr>
 
     <script>
 $(document).ready(function(){

@@ -1,29 +1,64 @@
 <!DOCTYPE html>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 <html>
+<style>
+@media screen and (min-width:768px) {
+    .brand {
+        display: inherit;
+        margin: 0;
+        padding: 10px 0 10px;
+        text-align: center;
+        text-shadow: 2px 2px 2px rgba(0,0,0,0.15);
+        font-family: "Josefin Slab","Helvetica Neue",Helvetica,Arial,sans-serif;
+        font-size: 5em;
+        font-weight: 700;
+        line-height: normal;
+        color: #CCCCFF;
+    }
+    .container-fluid .row .col-md-2{
+    border-right: 1px solid #eee;
+    min-height: 1000px;
+    }
+  }
+  </style>
 <head>
   <title>Amazonefaker</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-  <p class="navbar-text pull-right">
-  <% if user_signed_in? %>
-    Logged in as <strong><%= current_user.email %></strong>.
-    <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
-    <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
-  <% else %>
-    <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
-    <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
-  <% end %>
+  
+  
+  <!-- <span>
+  <%= form_tag admin_products_path, method: 'get', class: 'navbar-form pull-right', role: 'search' do %>
+    <div class="input-group">
+      <%= text_field_tag :search, params[:search], size: 30, placeholder: "PostSearch", class: "form-control"%>
+    </div>
+    <%= submit_tag 'Search', class: 'btn btn-success' %>
+  <% end %> 
+</span>
+    -->
+    
   </head>
   <body>
-  <% if notice %>
-    <p class="alert alert-success"><%= notice %></p>
-  <% end %>
-  <% if alert %>
-    <p class="alert alert-danger"><%= alert %></p>
-  <% end %>
-  <%= yield %>
+
+    <%=render 'layouts/nav_top'%>
+    <div class="container-fluid">
+      <div class ="row">
+        <div class ="col-md-2">
+          <ul class = "nav nav-stacked">  
+            <%=render 'layouts/nav_side'%>
+          </ul>
+        </div>
+        <div class ="col-md-10">
+          <%= yield %>  
+          <%=render 'layouts/product_contain'%>
+        </div>
+      </div>
+    </div>
+
+ 
+  
   
     
-</body>
+  </body>
 </html>
