@@ -14,6 +14,7 @@
         font-weight: 700;
         line-height: normal;
         color: #CCCCFF;
+
     }
     .side-boder{
     border-right: 1px solid #eee;
@@ -26,17 +27,7 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-  
-  
-  <!-- <span>
-  <%= form_tag admin_products_path, method: 'get', class: 'navbar-form pull-right', role: 'search' do %>
-    <div class="input-group">
-      <%= text_field_tag :search, params[:search], size: 30, placeholder: "PostSearch", class: "form-control"%>
-    </div>
-    <%= submit_tag 'Search', class: 'btn btn-success' %>
-  <% end %> 
-</span>
-    -->
+ 
     
   </head>
   <body>
@@ -53,17 +44,25 @@
         </div>
         <div class ="col-md-10">
       
-          <%= yield %>  
-
-          
-        
+          <%= yield %>          
         </div>
       </div>
     </div>
-
  
-  
-  
-    
   </body>
+
+
+<script>
+  $(document).ready(function() {
+    $('#category[category_id]').change(function() {
+        $.ajax({
+           url: "<%= welcome_index_path %>",
+           data: {
+               city_name: $("#category[category_id] option:selected").text()
+           },
+           dataType: "script"
+        });
+    });
+  });
+</script>
 </html>
