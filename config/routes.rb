@@ -16,7 +16,7 @@ end
 
   # You can have the root of your site routed with "root"
   root 'welcome#index'
-
+get "/fetch_items" => 'products#from_category', as: 'fetch_items'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

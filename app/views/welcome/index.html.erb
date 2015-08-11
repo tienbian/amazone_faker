@@ -1,4 +1,4 @@
-<%@products= Product.all%>
+
 <% @products.in_groups_of(4) do |group| %>
   <div class="row">
     <% group.compact.each do |idea| %>
